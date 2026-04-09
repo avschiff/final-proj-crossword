@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Crossword</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main>
+    <h1>Mini Crossword Game</h1>
+
+    <!-- info section -->
+    <div class="info-section">
+        <h2>How to Play</h2>
+        <p>Fill in the crossword puzzle by typing letters into the squares. The puzzle consists of across and down clues.</p>
+        <h3>Controls:</h3>
+        <ul>
+            <li><strong>Type letters:</strong> Enter letters into the highlighted squares.</li>
+            <li><strong>Enter:</strong> Switch between across and down directions.</li>
+            <li><strong>Arrow keys:</strong> Navigate to adjacent squares.</li>
+            <li><strong>Backspace:</strong> Delete the current letter and move to the previous square if empty.</li>
+            <li><strong>Click:</strong> Click on a square to focus it.</li>
+        </ul>
+        <p>The current row or column is highlighted in yellow. Use the "Check Answers" button to verify your solution.</p>
+    </div>
+
+    <!-- game container -->
+    <div class="game-container">
+        <div id="crossword"></div>
+
+        <div class="clues">
+            <h2>Across</h2>
+            <ul id="across-clues">
+                <li data-word="1-across">Talk ___ (boastfully banter)</li>
+                <li data-word="2-across">What has legs, but never walks?</li>
+                <li data-word="3-across">French for "love"</li>
+                <li data-word="4-across">What has a mouth, but never talks?</li>
+                <li data-word="5-across">Run-down in appearance</li>
+            </ul>
+
+            <h2>Down</h2>
+            <ul id="down-clues">
+                <li data-word="1-down">Milky Way bits</li>
+                <li data-word="2-down">___ Eisenhower, 1950s first lady</li>
+                <li data-word="3-down">Overhead</li>
+                <li data-word="4-down">Given a crossword hint</li>
+                <li data-word="5-down">Actress Washington of "Scandal"</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <button id="checkAnswers">Check Answers</button>
+
+    <p id="message"></p>
+
+    <script src="js/main.js"></script>
+</main>
+
+</body>
+</html>

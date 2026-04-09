@@ -1,0 +1,173 @@
+/* make game container vertical */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px auto;
+    max-width: 900px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+/* crossword grid */
+#crossword {
+    display: grid;
+    grid-template-columns: repeat(5, 55px);
+    grid-template-rows: repeat(5, 55px);
+    gap: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    justify-self: center;
+}
+
+/* cells */
+.cell {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 26px;
+    border: 2px solid black;
+    text-transform: uppercase;
+}
+
+.cell:focus {
+    outline: 3px solid #4a90e2;
+    background-color: #e6f2ff;
+}
+
+/* highlight current row/column */
+.highlight {
+    background-color: #fff3a6;
+}
+
+/* incorrect letters */
+.incorrect {
+    color: red;
+    font-weight: bold;
+}
+
+/* black squares */
+.black {
+    background-color: black;
+    border: 2px solid black;
+}
+
+/* clues section */
+.clues {
+    text-align: left;
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 300px;
+}
+
+.clues h2 {
+    margin-top: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.clues ul {
+    padding-left: 18px;
+}
+
+.clues li {
+    margin-bottom: 6px;
+    cursor: pointer;
+    list-style: decimal;
+}
+
+.clues li.active {
+    background-color: #fff3a6;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* button */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin-top: 15px;
+    border: none;
+    background-color: #1a4e8a;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+/* message */
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* info section */
+.info-section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.info-section h2 {
+    color: #1a4e8a;
+    margin-top: 0;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.info-section h3 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info-section ul {
+    padding-left: 20px;
+}
+
+.info-section li {
+    margin-bottom: 8px;
+    margin-left: 30px;
+    text-align: left;
+}
+
+.info-section p {
+    line-height: 1.6;
+    text-align: left;
+}
+
+@media (min-width: 700px) {
+    .game-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        margin: 30px auto;
+        max-width: 900px;
+    }
+    
+    .clues {
+        width: 100%;
+    }
+}

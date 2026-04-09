@@ -100,40 +100,33 @@ function getNextPosition(row, col, direction) { // returns next row and column b
     return { nextRow, nextCol };
 }
 
-// helper function to find next empty cell in current direction
-function getNextEmptyCell(startRow, startCol, direction) { // loops through cells in current direction until it finds an empty one, or returns null if all are filled, edited with copilot
-    let row = startRow;
-    let col = startCol;
-    const startRowOrig = startRow;
-    const startColOrig = startCol;
-    do {
-        ({ row, col } = getNextPosition(row, col, direction));
-        const cell = document.querySelector(`input[data-row="${row}"][data-col="${col}"]`);
-        if (cell && cell.value === '') {
-            return cell;
-        }
-    } while (row !== startRowOrig || col !== startColOrig);
-    return null; // all cells are filled
-}
-
-// event listener for input in cells
 document.addEventListener('input', function(e) {
     if (!e.target.classList.contains('cell')) return;
 
-    const row = parseInt(e.target.dataset.row);
-    const col = parseInt(e.target.dataset.col);
-    const { nextRow, nextCol } = getNextPosition(row, col, currentDirection);
+    let row = parseInt(e.target.dataset.row);
+    let col = parseInt(e.target.dataset.col);
 
-    let nextCell = document.querySelector(
-        `input[data-row="${nextRow}"][data-col="${nextCol}"]`
-    );
+    let steps = 0;
 
-    // if the next cell is filled, find the next empty one
-    if (nextCell && nextCell.value !== '') {
-        nextCell = getNextEmptyCell(nextRow, nextCol, currentDirection); // if the next cell is filled, find the next empty one in the current direction, help from copilot
+    while (steps < 25) { // prevent infinite loop
+        const next = getNextPosition(row, col, currentDirection);
+        row = next.nextRow;
+        col = next.nextCol;
+
+        const nextCell = document.querySelector(
+            `input[data-row="${row}"][data-col="${col}"]`
+        );
+
+        // if we find an empty cell → go there
+        if (nextCell && nextCell.value === '') {
+            nextCell.focus();
+            return;
+        }
+
+        steps++;
     }
 
-    if (nextCell) nextCell.focus();
+    // if no empty cell found, do nothing
 });
 
 // press enter to swap between across and down
